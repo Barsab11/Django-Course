@@ -9,7 +9,7 @@ class Post(models.Model):
              DRAFT = 'DF', 'Draft'
              PUBLISHED = 'PB', 'Published'
     title = models.CharField(max_length=250, null=True)
-    slug = models.SlugField(max_length=250, null=True)
+    slug = models.SlugField(max_length=250, null=True, unique_for_date='publish')
     body = models.TextField(null=True)
     publish = models.DateTimeField(default=timezone.now, null=True)
     create = models.DateTimeField(auto_now_add=True, null=True)
@@ -27,5 +27,5 @@ class Post(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse("blog:post_detail", args=[self.id])
+        return reverse("blog:post_detail", args=[self.slug])
     

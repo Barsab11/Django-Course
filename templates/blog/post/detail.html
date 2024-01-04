@@ -1,8 +1,7 @@
 {% extends "blog/base.html" %}
-
+{% load static %}
 {% block title %} {{post.title }} {% endblock title %}
-
-
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
 {% block content %} 
 <h1>{{ post.title }}</h1>
 <p class="date">

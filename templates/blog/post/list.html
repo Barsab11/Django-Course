@@ -1,13 +1,15 @@
 {% extends "blog/base.html" %}
+{% load static %}
 
-{% block title %} All Blogs {% endblock title %}
+{% block title %} All Posts {% endblock title %}
 
+<link rel="stylesheet" href="{% static 'css/list.css' %}">
 
 {% block content %} 
 
-{% for post in post1 %}
+{% for post in posts %}
 
-<h2>
+<h2 class="h2">
     <a href="{{post.get_absolute_url}}">
         {{post.title}}
     </a>
@@ -20,5 +22,5 @@
 <hr>
 
 {% endfor %}
-
+{% include 'blog/post/pagination.html' %}
 {% endblock content %}
